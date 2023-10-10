@@ -1,7 +1,7 @@
 from .data_processing import load_file
 import numpy as np
 
-from sklearn.metrics import accuracy_score, r2_score as r2
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split as tts
 
 def linear_regressor(filename, print_output=True):

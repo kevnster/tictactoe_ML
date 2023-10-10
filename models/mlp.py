@@ -2,9 +2,8 @@ from .data_processing import load_file
 import numpy as np
 
 from sklearn.neural_network import MLPClassifier, MLPRegressor
-from sklearn.model_selection import KFold, StratifiedKFold, train_test_split as tts
+from sklearn.model_selection import StratifiedKFold, train_test_split as tts
 from sklearn.metrics import accuracy_score, confusion_matrix as cm
-from sklearn.preprocessing import LabelEncoder
 
 def fit_model(model, X, y, is_multi):
     if is_multi:
@@ -39,7 +38,7 @@ def mlp_classifier(filename, print_output=True):
 
     return model
 
-def mlp_regressor(filename, print_output):
+def mlp_regressor(filename, print_output=True):
     is_multi = False
     X, y = load_file(filename)
     if "multi" in filename:
@@ -49,11 +48,13 @@ def mlp_regressor(filename, print_output):
     fit_model(model, X_train, y_train, is_multi)
     y_prediction = model.predict(X_test)
     accuracy = model.score(X_test, y_test)
+    regressor_score = model.score(X_test, y_test)
 
     if print_output:
         print("\n--MLP Regressor--")
         print(f"File name: {filename}")
         print(f"Accuracy: {accuracy*100}%")
+        print(f"Regressor score (R^2): {regressor_score}")
 
     return model
 

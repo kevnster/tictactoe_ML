@@ -2,8 +2,8 @@ from .data_processing import load_file
 import numpy as np
 
 from sklearn import neighbors
-from sklearn.model_selection import train_test_split as tts, cross_val_score, RepeatedKFold, StratifiedKFold 
-from sklearn.metrics import confusion_matrix as cm, classification_report as cr
+from sklearn.model_selection import train_test_split as tts, StratifiedKFold
+from sklearn.metrics import confusion_matrix as cm
 
 def fit_model(model, X, y, is_multi):
     if is_multi:
